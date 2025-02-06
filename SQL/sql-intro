@@ -1,0 +1,51 @@
+-- exempel från lektion 2025-02-04
+
+-- CREATE DATABASE min_fina_databas;
+
+-- USE min_fina_databas;
+
+-- CREATE TABLE min_tabell(id INT, name VArCHAr(255), age INT);
+
+-- ALTER TABLE min_tabell DROP email2, ADD age2 INT;
+
+-- ALTER TABLE min_tabell DROP age;
+
+-- DROP TABLE min_tabell;
+
+ALTER TABLE persons ADD salary INT;
+CREATE TABLE persons (
+		id INT PRIMARY KEY AUTO_INCREMENT, 
+		name TEXT NOT NULL, 
+		email VARCHAR(255) UNIQUE);
+        
+CREATE TABLE cars (
+				id INT PRIMARY KEY AUTO_INCREMENT,
+                model varchar(50),
+                owner_id INT,
+                
+                FOREIGN KEY (owner_id) REFERENCES persons(id));
+                
+-- CRUD ----------------------
+-- CREATE
+INSERT INTO persons (name, email, salary) VALUES ('Arne','annan@mail.com', 1000), ('Cecilia','en@mail.com', 4000);
+INSERT INTO cars (model,owner_id) VALUES ('VOLVO 740', 1),('SAAB 9000', 2); 
+-- INSERT INTO persons (salary) VALUES (1000);
+             
+             
+-- READ
+SELECT * FROM persons;
+SELECT name, email FROM persons;
+SELECT * FROM cars;
+
+SELECT name, salary FROM persons WHERE name = 'Bill';
+
+SELECT * FROM persons WHERE name LIKE '__L%';
+
+-- UPDATE
+UPDATE persons SET name = 'Banarne', salary = 3470 WHERE id = 3 ;
+
+-- DELETE
+DELETE FROM persons WHERE id = 2;
+           
+-- DROP TABLE persons;
+-- DROP TABLE cars;
